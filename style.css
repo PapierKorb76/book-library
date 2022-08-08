@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+
+.navbar{
+  background-color: #ffffff;
+  height: 120px;
+  width: 100%;
+  box-shadow: 0 5px 5px 2px rgba(31, 38, 135, 0.37);
+  margin-top: -20px;
+  display: flex;
+  align-items: center;
+  color: rgba(31, 38, 135, 1);
+}
+
+.navbar h1{
+    margin: 10px 0px 0px 20px; 
+}
+.book-library {
+  background-color: rgba(60, 106, 214, 1);
+  width: 80vw;
+  height: 65vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  overflow: scroll;
+  padding: 20px;
+  margin: 40px auto 0px auto;
+  overflow-x: hidden;
+}
+
+.book-library div {
+  width: 255px;
+  height: 200px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 10px 5px 5px rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, .90);
+  text-shadow: 0 2px 4px rgba(71, 97, 206, .60);
+}
+
+.book-library div h1,
+.book-library div h5,
+.book-library div p {
+  text-align: center;
+  color: #ffffff;
+}
+
+.book-library div h1 {
+  font-size: 20px;
+}
+
+.book-library div h5 {
+  font-size: 14px;
+  margin: -10px;
+}
+
+.book-library div p {
+  font-size: 14px;
+  position: relative;
+  top: 58.5%;
+  left: 80px;
+  text-shadow: 1px 1px 1px rgba(71, 97, 206, .60);
+}
+
+button {
+  width: 175px;
+  height: 45px;
+  background: rgb(156, 223, 216);
+  background: linear-gradient(90deg, rgba(156, 223, 216, 1) 0%, rgba(66, 153, 193, 1) 50%, rgba(60, 106, 214, 1) 100%);
+  border: none;
+  color: #ffffff;
+  font-weight: bolder;
+  border-radius: 25px;
+  margin: -65px 0 0 0;
+  font-size: 18px;
+  cursor: pointer;
+  grid-column: 2 / 2;
+  display: block;
+  margin: 40px auto 0px auto;
+}

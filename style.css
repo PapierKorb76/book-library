@@ -9,12 +9,11 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   font-family: sans-serif;
   background-color: #eee;
 }
 
-.navbar{
+.navbar {
   background-color: #ffffff;
   height: 120px;
   width: 100%;
@@ -25,9 +24,10 @@ body {
   color: rgba(31, 38, 135, 1);
 }
 
-.navbar h1{
-    margin: 10px 0px 0px 20px;
+.navbar h1 {
+  margin: 10px 0px 0px 20px;
 }
+
 .book-library {
   background-color: rgba(60, 106, 214, 1);
   width: 80vw;
@@ -54,9 +54,24 @@ body {
   text-shadow: 0 2px 4px rgba(71, 97, 206, 0.6);
 }
 
-.book-library div h1,
-.book-library div h5,
-.book-library div p {
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+/* Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(60, 106, 214, 1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #222;
+  border-radius: 50px;
+  border: 2px solid #ffffff;
+}
+
+.book-library div * {
   text-align: center;
   color: #ffffff;
 }
@@ -74,22 +89,115 @@ body {
   font-size: 14px;
   position: relative;
   top: 58.5%;
-  left: 80px;
+  left: 85px;
   text-shadow: 1px 1px 1px rgba(71, 97, 206, 0.6);
 }
 
-button {
+div button {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  position: relative;
+  top: -45%;
+  left: 87.5%;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0px auto;
+  position: absolute;
+  column-gap: 20px;
+  width: 37.5%;
+}
+
+.btn-container button {
   width: 175px;
   height: 45px;
-  background: rgb(156, 223, 216);
-  background: linear-gradient(90deg, rgba(156, 223, 216, 1) 0%, rgba(66, 153, 193, 1) 50%, rgba(60, 106, 214, 1) 100%);
   border: none;
   color: #ffffff;
   font-weight: bolder;
   border-radius: 25px;
   font-size: 18px;
   cursor: pointer;
-  grid-column: 2 / 2;
   display: block;
-  margin: 40px auto 0px auto;
 }
+
+#add-btn {
+  background: rgb(156, 223, 216);
+  background: linear-gradient(90deg, rgba(156, 223, 216, 1) 0%, rgba(66, 153, 193, 1) 50%, rgba(60, 106, 214, 1) 100%);
+}
+
+#remove-all-btn {
+  background: rgb(246, 134, 129);
+  background: linear-gradient(90deg, rgba(246, 134, 129, 1) 0%, rgba(195, 19, 46, 1) 41%, rgba(167, 0, 0, 1) 70%, rgba(84, 0, 0, 1) 100%);
+}
+
+/* MODAL STYLING */
+
+.modal-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  height: 350px;
+  border: 1.75px solid #ccc;
+}
+
+.modal-container h2 {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  color: #222;
+}
+
+.modal-container hr {
+  margin: -30px 0px 40px 0px;
+  width: 300px;
+  color: 1.75px solid #ccc;
+}
+
+.modal-container button {
+  background-color: #44c767;
+  border-radius: 5px;
+  border: 1px solid #18ab29;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 17px;
+  padding: 5px 56px;
+  height: 35px;
+  width: 275px;
+  text-decoration: none;
+  text-shadow: -1px -1px 0px #2f6627;
+  display: block;
+  margin: 20px auto 0px auto;
+}
+
+.modal-container button:hover {
+  background-color: #5cbf2a;
+}
+
+.modal-container input:focus {
+  outline: 2px solid #2bc1fc;
+  border: none;
+}
+
+.modal-container button:active {
+  position: relative;
+  top: 1px;
+}
+
+.modal-container input {
+  width: 275px;
+  height: 30px;
+  display: block;
+  margin: -20px auto 0px auto;
+  border: 1.75px solid #aaa;
+  background: none;
+}
+
+/* MODAL STYLING */

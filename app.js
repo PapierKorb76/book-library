@@ -1,35 +1,36 @@
 let myLibrary = [];
 
 const addButton = document.querySelector("#add-btn");
-const bookLibrary = document.getElementById('book-library');
+const bookLibrary = document.querySelector('.book-library');
 
-function Book(name, pages, author) {
-  this.name = name;
+function Book(title, author, pages) {
+  this.title = title;
   this.pages = pages;
   this.author = author;
 }
 
-Book.prototype.info = function (){
-  	return `This book is called ${this.name} and was written by ${this.author}, it has ${this.pages} pages`
-  }
-Book.prototype.input = function (){
-  	this.name = window.prompt("Input the name of your book");
-    this.author = window.prompt("Input the autor of your book");
-    this.pages = window.prompt("Input the number of pages of your book");
+Book.prototype.info = function() {
+  return `This book is called ${this.name} and was written by ${this.author}, it has ${this.pages} pages`;
 }
-  
-let book1 = new Book();
-book1.input();
 
-console.log(book1.info());
 function addBookToLibrary() {
-  
-}
-
-addButton.addEventListener("click", () => {
-	let element = document.createElement('div');
+  let element = document.createElement('div');
   let title = document.createElement('h1');
-  title.textContent = window.prompt("Header: ");
+  let author = document.createElement('h5');
+  let pages = document.createElement('p');
+  title.textContent = window.prompt("Title: ");
+  author.textContent = window.prompt("Author: ");
+  pages.textContent = window.prompt("Pages: ");
+  pages.textContent += " pages";
+  if(title.textContent === null){
+  	return;
+  }
+  myLibrary.push(new Book(title.textContent.toString(), author.textContent.toString(), pages.textContent.toString()));
   bookLibrary.appendChild(element);
   element.appendChild(title);
-});
+  element.appendChild(author);
+  element.appendChild(pages);
+  console.log(myLibrary);
+}
+
+addButton.addEventListener("click", addBookToLibrary);

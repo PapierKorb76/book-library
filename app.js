@@ -10,19 +10,22 @@ const addBookBtn = document.querySelector("#add-book-btn");
 const bookTitle = document.querySelector("#title-book");
 const bookAuthor = document.querySelector("#author-book");
 const bookPages = document.querySelector("#pages-book");
-const isReadedBtn = document.querySelector("#read-btn");
+
+if (myLibrary.length !== 0) {
+  isReadedBtn.addEventListener("click", bookReaded);
+}
 
 modalContainer.style.display = "none";
 
-
-function Book(title, author, pages, isReaded) {
+function Book(title, author, pages) {
   this.title = title;
   this.pages = pages;
   this.author = author;
-  this.isReaded = false;
+
 }
 
-
+Book.prototype.isReaded = false;
+Book.prototype.isReadedState = "Read";
 
 function addBookToLibrary() {
   myLibrary.push(new Book(bookTitle.value, bookAuthor.value, bookPages.value));
@@ -41,7 +44,7 @@ function buildLibrary(data) {
         <h1>${data[i].title}</h1>
         <h5>${data[i].author}</h5>
         <p>${data[i].pages} pages</p>
-        <button id = "read-btn"  onclick="bookReaded(${i})">Read ✓</button>
+        <button id = "read-btn"  onclick="bookReaded(${i})">${data[i].isReadedState}</button>
         <button id = "delete-btn" onclick="deleteBook(${i})">✖</button>
       </div>
       `
@@ -60,24 +63,28 @@ function deleteAllBooks(indexOfBook) {
 }
 
 function showModal() {
-  modalContainer.style.display === "none" ? 
-  modalContainer.style.display = "block" 
-  : 
-  modalContainer.style.display = "none";
+  modalContainer.style.display === "none" ?
+    modalContainer.style.display = "block" :
+    modalContainer.style.display = "none";
 }
 
 function closeModal() {
   modalContainer.style.display = "none";
 }
 
-function bookReaded(indexOfBook){
-	myLibrary[indexOfBook].isReaded = true;
-  myLibrary[indexOfBook].isReadedBtn.textContent = "Readed ✓";
+function bookReaded(indexOfBook) {
+  myLibrary[indexOfBook].isReaded = !myLibrary[indexOfBook].isReaded;
+  myLibrary[indexOfBook].isReaded === true ?
+    myLibrary[indexOfBook].isReadedState = "Readed ✓" :
+    myLibrary[indexOfBook].isReadedState = "Read";
+
+  buildLibrary(myLibrary);
 }
-window.addEventListener('mouseup', function(event){
-	if (event.target != modalContainer && event.target.parentNode != modalContainer){
-        modalContainer.style.display = 'none';
-    }
+
+window.addEventListener('mouseup', function(event) {
+  if (event.target != modalContainer && event.target.parentNode != modalContainer) {
+    closeModal();
+  }
 });
 
 addButton.addEventListener("click", showModal);

@@ -55,18 +55,19 @@ body {
   text-shadow: 0 2px 4px rgba(71, 97, 206, 0.6);
 }
 
-#delete-btn{
-    top: 0;
-    right: 0;
-    background-color: #000;
-    position: absolute;
+#delete-btn {
+  top: 0;
+  right: 0;
+  position: absolute;
 }
 
-#read-btn{
-    top: 0;
-    right: 0;
-    background-color: #000;
-    position: absolute;
+#read-btn span {
+  display: inline;
+}
+
+#read-btn {
+  display: inline;
+  margin: 12px 0px 0px 95px;
 }
 
 ::-webkit-scrollbar {
@@ -148,7 +149,7 @@ div button {
   background: linear-gradient(90deg, rgba(246, 134, 129, 1) 0%, rgba(195, 19, 46, 1) 41%, rgba(167, 0, 0, 1) 70%, rgba(84, 0, 0, 1) 100%);
 }
 
-#read-btn{
+#read-btn {
   font-size: 14px;
   position: relative;
   top: 35.5%;
@@ -173,7 +174,7 @@ div button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+
 }
 
 .modal-container h2 {

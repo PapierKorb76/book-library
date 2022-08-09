@@ -3,24 +3,34 @@ let myLibrary = [];
 const addButton = document.querySelector("#add-btn");
 const bookLibrary = document.querySelector('.book-library');
 const removeAllButton = document.querySelector("#remove-all-btn");
+const showModalBtn = document.querySelector("#show-modal-btn");
+const modalContainer = document.querySelector(".modal-container");
+const closeModalBtn = document.querySelector("#close-modal-btn");
+const addBookBtn = document.querySelector("#add-book-btn");
+const bookTitle = document.querySelector("#title-book");
+const bookAuthor = document.querySelector("#author-book");
+const bookPages = document.querySelector("#pages-book");
+const isReadedBtn = document.querySelector("#read-btn");
 
-function Book(title, author, pages) {
+modalContainer.style.display = "none";
+
+
+function Book(title, author, pages, isReaded) {
   this.title = title;
   this.pages = pages;
   this.author = author;
+  this.isReaded = false;
 }
 
+
+
 function addBookToLibrary() {
-  let element = document.createElement('div');
-  let title = document.createElement('h1');
-  let author = document.createElement('h5');
-  let pages = document.createElement('p');
-  let deleteButton = document.createElement("button");
-  title.textContent = window.prompt("Title: ");
-  author.textContent = window.prompt("Author: ");
-  pages.textContent = window.prompt("Pages: ");
-  myLibrary.push(new Book(title.textContent, author.textContent, pages.textContent));
+  myLibrary.push(new Book(bookTitle.value, bookAuthor.value, bookPages.value));
   buildLibrary(myLibrary);
+  modalContainer.style.display = "none";
+  bookTitle.value = "";
+  bookAuthor.value = "";
+  bookPages.value = "";
 }
 
 function buildLibrary(data) {
@@ -31,7 +41,8 @@ function buildLibrary(data) {
         <h1>${data[i].title}</h1>
         <h5>${data[i].author}</h5>
         <p>${data[i].pages} pages</p>
-        <button onclick="deleteBook(${i})">✖</button>
+        <button id = "read-btn"  onclick="bookReaded(${i})">Read ✓</button>
+        <button id = "delete-btn" onclick="deleteBook(${i})">✖</button>
       </div>
       `
     bookLibrary.insertAdjacentHTML('beforeend', htmlBook);
@@ -48,5 +59,28 @@ function deleteAllBooks(indexOfBook) {
   buildLibrary(myLibrary);
 }
 
-addButton.addEventListener("click", addBookToLibrary);
+function showModal() {
+  modalContainer.style.display === "none" ? 
+  modalContainer.style.display = "block" 
+  : 
+  modalContainer.style.display = "none";
+}
+
+function closeModal() {
+  modalContainer.style.display = "none";
+}
+
+function bookReaded(indexOfBook){
+	myLibrary[indexOfBook].isReaded = true;
+  myLibrary[indexOfBook].isReadedBtn.textContent = "Readed ✓";
+}
+window.addEventListener('mouseup', function(event){
+	if (event.target != modalContainer && event.target.parentNode != modalContainer){
+        modalContainer.style.display = 'none';
+    }
+});
+
+addButton.addEventListener("click", showModal);
+addBookBtn.addEventListener("click", addBookToLibrary);
 removeAllButton.addEventListener("click", deleteAllBooks);
+closeModalBtn.addEventListener("click", closeModal);

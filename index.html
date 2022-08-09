@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -17,6 +17,16 @@
       <button id="add-btn"> + Add</button>
       <button id="remove-all-btn"> - Remove All</button>
     </div>
+    <div class="modal-container" id="modal">
+      <button id="close-modal-btn">✖</button>
+      <h2>Add your book!</h2>
+      <hr>
+      <input type="text" placeholder="Title" id="title-book">
+      <br><br><input type="text" placeholder="Author" id="author-book">
+      <br><br><input type="text" placeholder="Pages" id="pages-book">
+      <button id="add-book-btn">Insert your book</button>
+    </div>
+    <script src="app.js"></script>
   </body>
-  <script src="app.js"></script>
+
 </html>
